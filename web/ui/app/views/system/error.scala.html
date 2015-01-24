@@ -1,0 +1,15 @@
+@(throwable: Throwable)
+
+@import utils.TemplateMethods._
+
+Error code: @requestId
+
+<!-- Server IP: @serverIp -->
+<br>
+@if(!isProd) {
+    @throwable
+    <br>
+    @throwable.getMessage()
+    <br>
+    @Html(throwable.getStackTrace().map(_.toString+"<br>").mkString)
+}
